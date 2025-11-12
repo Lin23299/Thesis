@@ -5,7 +5,8 @@
 
 ### 引言
 
-讨论形式化验证、以C语言为代表的一阶命令式程序语言作为系统编程的主力语言，其编译过程的可靠性对于软件系统的可靠性的基石作用。
+1. 讨论形式化验证、以C语言为代表的一阶命令式程序语言作为系统编程的主力语言，其编译过程的正确性对于软件系统可靠性的作用。
+2. 讨论编译器验证，尤其是编译验证的可组合性和对并发程序的支持 
 
 ### 背景介绍
 
@@ -13,34 +14,52 @@
 2. 编译器验证
    a. history
    b. 操作语义与精化关系
-   c. CompCert:具体的精化关系定义和工业界落地
+   c. CompCert:具体的精化关系定义
 3. 可组合编译验证
+   a. 模拟关系与精化关系
+4. 对并发程序的编译验证
 
 ### 相关工作
 1. CompCert扩展工作
-CompCertM SepCompCert Compositional CompCert CompCertO CASCompCert ...
+   a. 可组合编译验证
+   CompCertM SepCompCert Compositional CompCert CompCertO
+   b. 针对多线程程序的编译验证
+   CC-TSO, CCX/CCAL CASCompCert ...
 2. 其他相关的编译验证研究工作
-CakeML DimSum 对并发程序相关的讨论？
+   CakeML DimSum CCR 
 
 ### 论文贡献
 
-1. 通过名义内存模型增强CompCert框架下对程序语义的描述和验证能力
+1. 通过名义内存模型增强对一阶语言程序语义的描述和验证能力
 2. 提出直接精化关系作为通用语义接口实现异构程序可组合编译验证
-3. 线程程序的语义接口与多线程程序可组合编译验证
+3. 对直接精化关系的线程化增强与多线程程序可组合编译验证
 
 ## 正文
 
 1. 背景技术内容 ：
-   a. CompCert
-   b. CompCertO
-   c. CASCompCert
-   d. ?
+   a. CompCert: memory model, passes, simulations, ...
+   b. CompCertO: language interface/simulation convention ... 
+   c. Nominal Techniques
 
 2. 基于名义内存模型的编译器验证
+   a. 背景：名义技术
+   a. 名义内存模型的定义
+   b. 使用名义内存模型的编译验证(Nominal CompCert)
+   c. 基于名义内存模型的扩展
+      1）sms: 简化证明 2）sa&mutli-stack: 低成本提高描述和验证能力
 
 3. 基于直接精化关系的可组合编译器验证
+   a. 背景：CompCertO中的可组合编译验证
+   b. 统一而可组合的Kripke内存关系（injp）
+   c. 基于直接精化关系的可组合编译器验证（CompCert）
+   d. 基于直接精化关系的异构程序编译验证 (Examples)
 
 4. 针对多线程程序中共享栈空间的可组合编译器验证
+   a. 背景：CASCompCert与多线程程序编译验证的挑战
+   b. 基于直接精化关系的多线程语义接口（threaded-injp）
+   c. 多线程语义与模拟关系的线程间组合性（thread-linking）
+   c. 针对多线程程序的可组合编译器验证 (CompCertOC)
+   d. 基于线程化直接精化关系的异构多线程程序编译验证 (Examples)
 
 ## 总结
 
